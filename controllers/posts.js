@@ -41,9 +41,24 @@ async function show(req, res) {
   }
 }
 
+async function update(req, res){
+  try {
+    const post = await Post.findByIdAndUpdate(
+      req.params.postId,
+      req.body,
+      { new: true }
+    ).populate('author')
+    res.status(200).json(post)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json(error)
+  }
+}
+
 export {
   create,
   index,
   show,
+  update,
 }
 
