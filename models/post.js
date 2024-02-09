@@ -41,10 +41,8 @@ const postSchema = new Schema(
       // required: true
     },
     car: [carSchema],
-    author: {
-      type: Schema.Types.ObjectId, 
-      ref: 'Profile'
-    }
+    author: [{type: Schema.Types.ObjectId, ref: 'Profile'}] 
+    
 },{
   timestamps: true,
 })
