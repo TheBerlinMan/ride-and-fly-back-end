@@ -13,6 +13,7 @@ router.post('/', checkAuth, postsCtrl.create)
 router.get('/', checkAuth, postsCtrl.index)
 router.get('/:postId', checkAuth, postsCtrl.show)
 router.put('/:postId', checkAuth, postsCtrl.update)
+router.delete('/:postId', checkAuth, postsCtrl.delete)
 
 
 export { router }
