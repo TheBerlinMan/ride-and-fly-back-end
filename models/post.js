@@ -17,28 +17,28 @@ const postSchema = new Schema(
   {
     arrivalDate: {
       type: Date, 
-      required: true
+      // required: true
     },
     arrivalTime: {
       type: Date, 
-      required: true
+      // required: true
     },
     arrivalAirport: {
       type: String, 
-      required: true, 
+      // required: true, 
       enum:['EWR', 'JFK', 'LGA']
     },
     arrivalTerminal: {
       type: String, 
-      required: true
+      // required: true
     },
     dropOff: {
       type: String, 
-      required: true
+      // required: true
     },
     partySize: {
       type: Number, 
-      required: true
+      // required: true
     },
     car: [carSchema],
     author: {
