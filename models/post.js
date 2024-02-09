@@ -15,20 +15,20 @@ const carSchema = new Schema(
 
 const postSchema = new Schema(
   {
-    arrivalDate: {
+    date: {
       type: Date, 
       // required: true
     },
-    arrivalTime: {
+    time: {
       type: Date, 
       // required: true
     },
-    arrivalAirport: {
+    airport: {
       type: String, 
       // required: true, 
       enum:['EWR', 'JFK', 'LGA']
     },
-    arrivalTerminal: {
+    terminal: {
       type: String, 
       // required: true
     },
