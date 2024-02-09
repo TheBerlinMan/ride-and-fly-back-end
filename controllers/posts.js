@@ -30,8 +30,20 @@ async function index (req,res) {
   }
 }
 
+async function show(req, res) {
+  try {
+    const post = await Post.findById(req.params.postId)
+    .populate(['author'])
+    res.status(200).json(post)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json(error)
+  }
+}
+
 export {
   create,
   index,
+  show,
 }
 
