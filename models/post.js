@@ -13,15 +13,38 @@ const carSchema = new Schema(
   }
 )
 
-const postSchema = new Schema({
-  arrivalDate: {type: Date, required: true},
-  arrivalTime: {type: Date, required: true},
-  arrivalAirport: {type: String, required: true, enum:['EWR', 'JFK', 'LGA']},
-  arrivalTerminal: {type: String, required: true},
-  dropOff: {type: String, required: true},
-  partySize: {type: Number, required: true},
-  car: [carSchema],
-  postOwner: {type: Schema.Types.ObjectId, ref: 'Profile'}
+const postSchema = new Schema(
+  {
+    arrivalDate: {
+      type: Date, 
+      required: true
+    },
+    arrivalTime: {
+      type: Date, 
+      required: true
+    },
+    arrivalAirport: {
+      type: String, 
+      required: true, 
+      enum:['EWR', 'JFK', 'LGA']
+    },
+    arrivalTerminal: {
+      type: String, 
+      required: true
+    },
+    dropOff: {
+      type: String, 
+      required: true
+    },
+    partySize: {
+      type: Number, 
+      required: true
+    },
+    car: [carSchema],
+    author: {
+      type: Schema.Types.ObjectId, 
+      ref: 'Profile'
+    }
 },{
   timestamps: true,
 })
