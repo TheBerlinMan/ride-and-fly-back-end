@@ -22,8 +22,18 @@ async function show(req,res){
   }
 }
 
-async function update(req,res){
-
+async function update(req, res){
+  try {
+    const profile = await Profile.findByIdAndUpdate(
+      req.params.profileId,
+      req.body,
+      { new: true }
+    )
+    res.status(200).json(profile)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json(error)
+  }
 }
 
 async function addPhoto(req, res) {
