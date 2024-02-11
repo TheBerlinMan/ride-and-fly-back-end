@@ -5,7 +5,7 @@ const Schema = mongoose.Schema
 const messageSchema = new Schema({
   messageAuthor: {type: Schema.Types.ObjectId, ref: 'Profile'},
   recipient: {type: Schema.Types.ObjectId, ref: 'Profile'},
-  post: {type: Schema.Types.ObjectId, ref: 'Post'},
+  refPost: {type: Schema.Types.ObjectId, ref: 'Post'},
   text: {type: String, required: true},
 },{
   timestamps: true,
