@@ -9,8 +9,8 @@ const router = Router()
 
 // ========= Protected Routes ========= 
 router.use(decodeUserFromToken)
-// router.post('/', checkAuth, messagesCtrl.create)
 router.get('/', checkAuth, messagesCtrl.indexInbox)
+router.post('/', checkAuth, messagesCtrl.sendMessage)
 
 
 export { router }
