@@ -22,7 +22,7 @@ async function indexInbox(req, res){
 
 
 async function sendMessage(req,res){
-
+  // still testing in postman - taking a break.
   const recipient = req.body.recipient
   const text = req.body.text
   const messageAuthor = req.user.profile._id
