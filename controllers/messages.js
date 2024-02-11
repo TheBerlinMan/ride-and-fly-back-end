@@ -8,7 +8,7 @@ async function indexInbox(req, res){
     const messages = await Message.find({
       // $or is the mongoDB query operator used to perform 'OR'
       // a comma would have performed 'AND'
-      $or: [ { messageAuthor: profileId } , { recipient: profileId }]
+      $or: [ { messageAuthor: profileId } , { recipient: profileId } ]
     })
     .populate('messageAuthor', 'name') 
     .populate('recipient', 'name') 
@@ -25,7 +25,7 @@ async function sendMessage(req,res){
   // still testing in postman - taking a break.
   const recipient = req.body.recipient
   const text = req.body.text
-  const messageAuthor = req.user.profile._id
+  const messageAuthor = req.user.profile
   const originalPost = req.body.postId
 
   try {
