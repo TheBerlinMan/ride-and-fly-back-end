@@ -28,7 +28,7 @@ async function update(req, res){
       req.params.profileId,
       req.body,
       { new: true }
-    ).populate('profile')
+    )
     res.status(200).json(profile)
   } catch (error) {
     console.log(error)
