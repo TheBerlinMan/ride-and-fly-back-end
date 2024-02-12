@@ -12,6 +12,6 @@ const tripSchema = new Schema({
   timestamps: true,
 })
 
-const Trip = mongoose.model('Trip', messageSchema)
+const Trip = mongoose.model('Trip', tripSchema)
 
 export { Trip }
