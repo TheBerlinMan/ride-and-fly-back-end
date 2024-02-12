@@ -10,7 +10,7 @@ async function create(req, res) {
       { $push: { trips: trip } },
       { new: true }
     )
-    post.author = profile
+    trip.author = profile
     res.status(201).json(trip)
   } catch (error) {
     console.log(error)
@@ -32,7 +32,7 @@ async function index (req,res) {
 
 async function show(req, res) {
   try {
-    const trip = await Trip.findById(req.params.postId)
+    const trip = await Trip.findById(req.params.tripId)
     .populate(['author'])
     res.status(200).json(trip)
   } catch (error) {
