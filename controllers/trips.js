@@ -1,17 +1,17 @@
 import { Profile } from "../models/profile.js"
-import { Post } from "../models/post.js"
+import { Trip } from "../models/trip.js"
 
 async function create(req, res) {
   try {
     req.body.author = req.user.profile
-    const post = await Post.create(req.body)
+    const trip = await Trip.create(req.body)
     const profile = await Profile.findByIdAndUpdate(
       req.user.profile,
-      { $push: { posts: post } },
+      { $push: { trips: trip } },
       { new: true }
     )
     post.author = profile
-    res.status(201).json(post)
+    res.status(201).json(trip)
   } catch (error) {
     console.log(error)
     res.status(500).json(error)
@@ -20,10 +20,10 @@ async function create(req, res) {
 
 async function index (req,res) {
   try {
-    const posts = await Post.find({})
+    const trips = await Trip.find({})
     .populate('author')
     .sort({createdAt: 'desc'})
-    res.status(200).json(posts)
+    res.status(200).json(trips)
   } catch (error) {
     console.log(error)
     res.status(500).json(error)
@@ -32,9 +32,9 @@ async function index (req,res) {
 
 async function show(req, res) {
   try {
-    const post = await Post.findById(req.params.postId)
+    const trip = await Trip.findById(req.params.postId)
     .populate(['author'])
-    res.status(200).json(post)
+    res.status(200).json(trip)
   } catch (error) {
     console.log(error)
     res.status(500).json(error)
@@ -43,25 +43,25 @@ async function show(req, res) {
 
 async function update(req, res){
   try {
-    const post = await Post.findByIdAndUpdate(
-      req.params.postId,
+    const trip = await Trip.findByIdAndUpdate(
+      req.params.tripId,
       req.body,
       { new: true }
     ).populate('author')
-    res.status(200).json(post)
+    res.status(200).json(trip)
   } catch (error) {
     console.log(error)
     res.status(500).json(error)
   }
 }
 
-async function deletePost(req, res) {
+async function deleteTrip(req, res) {
   try {
-    const post = await Post.findByIdAndDelete(req.params.postId)
+    const trip = await Trip.findByIdAndDelete(req.params.tripId)
     const profile = await Profile.findById(req.user.profile)
-    profile.post.remove({ _id: req.params.postId })
+    profile.trip.remove({ _id: req.params.tripId })
     await profile.save()
-    res.json(post)
+    res.json(trip)
   } catch (error) {
     console.log(error)
     res.status(500).json(error)
