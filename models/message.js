@@ -2,11 +2,20 @@ import mongoose from 'mongoose'
 
 const Schema = mongoose.Schema
 
+const conversationSchema = new Schema({
+  participants: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+  relatedPost: { type: Schema.Types.ObjectId, ref: 'Post' },
+}, { 
+  timestamps: true
+})
+
+
 const messageSchema = new Schema({
+  text: {type: String, required: true},
   messageAuthor: {type: Schema.Types.ObjectId, ref: 'Profile'},
   recipient: {type: Schema.Types.ObjectId, ref: 'Profile'},
-  originalPost: {type: Schema.Types.ObjectId, ref: 'Post'},
-  text: {type: String, required: true},
+  relatedPost: {type: Schema.Types.ObjectId, ref: 'Post'},
+  conversation: conversationSchema
 },{
   timestamps: true,
 })
