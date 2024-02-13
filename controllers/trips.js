@@ -5,15 +5,14 @@ async function create(req, res) {
   try {
     req.body.author = req.user.profile
     const trip = await Trip.create(req.body)
-    const profile = await Profile.findByIdAndUpdate(
-      req.user.profile,
-      { $push: { trips: trip } },
+    await Profile.updateMany(
+      { _id: { $in: req.body.carPals }},
+      { $push: { trips: trip._id }},
       { new: true }
     )
-    trip.author = profile
     res.status(201).json(trip)
   } catch (error) {
-    console.log(error)
+    console.log(error);
     res.status(500).json(error)
   }
 }
@@ -33,7 +32,7 @@ async function index (req,res) {
 async function show(req, res) {
   try {
     const trip = await Trip.findById(req.params.tripId)
-    .populate(['author'])
+    .populate(['author', 'carPals'])
     res.status(200).json(trip)
   } catch (error) {
     console.log(error)
@@ -58,10 +57,11 @@ async function update(req, res){
 async function deleteTrip(req, res) {
   try {
     const trip = await Trip.findByIdAndDelete(req.params.tripId)
-    const profile = await Profile.findById(req.user.profile)
-    profile.trip.remove({ _id: req.params.tripId })
-    await profile.save()
-    res.json(trip)
+    await Profile.updateMany(
+      { trips: req.params.tripId },
+      { $pull: { trips: req.params.tripId }},
+    )
+    res.json({ message: "Trip deleted successfully", trip })
   } catch (error) {
     console.log(error)
     res.status(500).json(error)
