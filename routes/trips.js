@@ -9,11 +9,11 @@ const router = Router()
 
 // ========= Protected Routes ========= 
 router.use(decodeUserFromToken)
-router.post('/', checkAuth, tripsCtrl.create)
-router.get('/', checkAuth, tripsCtrl.index)
-router.get('/:tripId', checkAuth, tripsCtrl.show)
-router.put('/:tripId', checkAuth, tripsCtrl.update)
-router.delete('/:tripId', checkAuth, tripsCtrl.delete)
+router.post('/trips', checkAuth, tripsCtrl.create)
+router.get('/trips', checkAuth, tripsCtrl.index)
+router.get('/trips/:tripId', checkAuth, tripsCtrl.show)
+router.put('/trips/:tripId', checkAuth, tripsCtrl.update)
+router.delete('/trips/:tripId', checkAuth, tripsCtrl.delete)
 
 
 export { router }
