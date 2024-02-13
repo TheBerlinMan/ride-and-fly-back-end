@@ -24,10 +24,9 @@ async function indexInbox(req, res){
 
 
 async function sendMessage(req,res){
-  const recipient = req.body.recipient
-  const text = req.body.text
-  const messageAuthor = req.user.profile
-  const relatedPost = req.body.relatedPost
+
+  const { recipient, text, relatedPost } = req.body
+  const messageAuthor = req.user.profile 
 
   try {
     const newMessage = new Message({
@@ -42,7 +41,6 @@ async function sendMessage(req,res){
     console.log(error)
     res.status(500).json(error)
   }
-
 }
 
 export {
