@@ -3,15 +3,15 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 
-const carSchema = new Schema(
-  {
-    luxury: Boolean,
-    oversizedLuggage: Boolean,
-    pet: Boolean,
-    carType: String,
+// const carSchema = new Schema(
+//   {
+//     luxury: Boolean,
+//     oversizedLuggage: Boolean,
+//     pet: Boolean,
+//     carType: String,
       
-  }
-)
+//   }
+// )
 
 const postSchema = new Schema(
   {
@@ -40,7 +40,10 @@ const postSchema = new Schema(
       type: Number, 
       // required: true
     },
-    car: [carSchema],
+    luxuryCar: {type: Boolean},
+    oversizedLuggage: {type: Boolean},
+    travelingWithPet: {type: Boolean},
+    carType: {type: String},
     author: [{type: Schema.Types.ObjectId, ref: 'Profile'}] 
     
 },{
