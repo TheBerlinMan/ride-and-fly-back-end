@@ -5,9 +5,9 @@ const Schema = mongoose.Schema
 
 const carSchema = new Schema(
   {
-    luxury: Boolean,
+    luxuryCar: Boolean,
     oversizedLuggage: Boolean,
-    pet: Boolean,
+    travelingWithPet: Boolean,
     carType: String,
       
   }
