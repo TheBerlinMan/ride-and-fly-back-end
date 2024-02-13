@@ -4,17 +4,16 @@ import { Trip } from "../models/trip.js"
 async function create(req, res) {
   try {
     req.body.author = req.user.profile
-    const trip = await Trip.create(req.body)
-    const profile = await Profile.findByIdAndUpdate(
-      req.user.profile,
-      { $push: { trips: trip } },
+    const trip = await Trip.create(req.body);
+    await Profile.updateMany(
+      { _id: { $in: req.body.carPals }},
+      { $push: { trips: trip._id }},
       { new: true }
-    )
-    trip.author = profile
-    res.status(201).json(trip)
+    );
+    res.status(201).json(trip);
   } catch (error) {
-    console.log(error)
-    res.status(500).json(error)
+    console.log(error);
+    res.status(500).json(error);
   }
 }
 
