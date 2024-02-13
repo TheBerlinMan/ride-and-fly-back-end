@@ -27,14 +27,14 @@ async function sendMessage(req,res){
   const recipient = req.body.recipient
   const text = req.body.text
   const messageAuthor = req.user.profile
-  const originalPost = req.body.originalPost
+  const relatedPost = req.body.relatedPost
 
   try {
     const newMessage = new Message({
       messageAuthor: messageAuthor,
       recipient: recipient,
       text: text,
-      originalPost: originalPost
+      relatedPost: relatedPost
     })
     await newMessage.save()
     res.json(newMessage)
