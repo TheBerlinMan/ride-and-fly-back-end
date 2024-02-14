@@ -12,9 +12,7 @@ async function indexInbox(req, res){
     })
     .populate('messageAuthor', 'name') 
     .populate('recipient', 'name') 
-    .sort({ createdAt: 'desc' })
-    console.log(profileId);
-    console.log(messages)
+    .sort({ createdAt: 'desc' }) 
     res.json(messages)
   } catch (error) {
     console.log(error)
@@ -27,6 +25,7 @@ async function sendMessage(req,res){
 
   const { recipient, text, relatedPost } = req.body
   const messageAuthor = req.user.profile 
+  
 
   try {
     const newMessage = new Message({
