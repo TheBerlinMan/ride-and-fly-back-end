@@ -46,7 +46,7 @@ const postSchema = new Schema(
     },
     car: [carSchema],
     author: [{type: Schema.Types.ObjectId, ref: 'Profile'}],
-    messages: [{type: Schema.Types.ObjectId, ref: 'Message'}],
+
 
     
 },{

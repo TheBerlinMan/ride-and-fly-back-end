@@ -10,7 +10,6 @@ const router = Router()
 // ========= Protected Routes ========= 
 router.use(decodeUserFromToken)
 router.post('/', checkAuth, postsCtrl.create)
-router.post('/:postId/messages', checkAuth, postsCtrl.sendMessage)
 router.get('/', checkAuth, postsCtrl.index)
 router.get('/:postId', checkAuth, postsCtrl.show)
 router.put('/:postId', checkAuth, postsCtrl.update)
