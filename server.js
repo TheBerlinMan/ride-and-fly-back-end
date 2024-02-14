@@ -14,6 +14,7 @@ import { router as authRouter } from './routes/auth.js'
 import { router as postsRouter} from './routes/posts.js'
 import { router as messagesRouter} from './routes/messages.js'
 import { router as tripsRouter } from './routes/trips.js'
+import { router as conversationsRouter } from './routes/conversations.js'
 
 // create the express app
 const app = express()
@@ -30,6 +31,7 @@ app.use('/api/auth', authRouter)
 app.use('/api/posts', postsRouter)
 app.use('/api/messages', messagesRouter)
 app.use('/api/trips', tripsRouter)
+app.use('/api/conversations', conversationsRouter)
 
 // handle 404 errors
 app.use(function (req, res, next) {
