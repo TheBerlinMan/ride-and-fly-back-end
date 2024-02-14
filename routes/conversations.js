@@ -9,6 +9,7 @@ const router = Router()
 
 // ========= Protected Routes ========= 
 router.use(decodeUserFromToken)
+router.get('/', checkAuth, convoCtrl.allConvos)
 router.get('/conversations/:conversationId', checkAuth, convoCtrl.showConvo)
 
 

@@ -17,7 +17,20 @@ async function showConvo(req,res){
   }
 }
 
+async function allConvos(req,res){
+  try {
+    const convos = await Conversation.find({})
+    // .populate('author')
+    .sort({createdAt: 'desc'})
+    res.status(200).json(convos)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json(error)
+  }
+}
+
 
 export {
   showConvo,
+  allConvos,
 }
