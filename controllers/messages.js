@@ -1,4 +1,5 @@
 import { Message } from "../models/message.js"
+import { Conversation } from "../models/conversation.js"
 
 async function indexInbox(req, res){
 
@@ -23,19 +24,31 @@ async function indexInbox(req, res){
 
 async function sendMessage(req,res){
 
-  const { recipient, text, relatedPost } = req.body
-  const messageAuthor = req.user.profile 
-  
-
   try {
+    const { recipient, text, relatedPost } = req.body
+    const messageAuthor = req.user.profile 
+    
+    let conversation = await Conversation.findOne({
+      participants: { $all: [messageAuthor, recipient] },
+      relatedPost
+    })
+  
+    if (!conversation) {
+      conversation = new Conversation({
+        participants: [messageAuthor, recipient],
+        relatedPost
+      })
+      await conversation.save()
+    }
     const newMessage = new Message({
       messageAuthor: messageAuthor,
       recipient: recipient,
       text: text,
-      relatedPost: relatedPost
+      conversation: conversation._id
     })
     await newMessage.save()
     res.json(newMessage)
+
   } catch (error) {
     console.log(error)
     res.status(500).json(error)
