@@ -36,19 +36,27 @@ async function sendMessage(req,res){
     if (!conversation) {
       conversation = new Conversation({
         participants: [messageAuthor, recipient],
+        messageAuthor,
+        recipient,
         relatedPost
       })
       await conversation.save()
     }
     const newMessage = new Message({
-      messageAuthor: messageAuthor,
-      recipient: recipient,
-      text: text,
+      messageAuthor,
+      recipient,
+      text,
+      relatedPost,
       conversation: conversation._id
     })
     await newMessage.save()
-    res.json(newMessage)
 
+    const updatedConvo = await Conversation.findByIdAndUpdate(
+      conversation._id,
+      { $push: {messages: newMessage._id} },
+      { new: true}
+    )
+    res.json({newMessage, updatedConvo})
   } catch (error) {
     console.log(error)
     res.status(500).json(error)

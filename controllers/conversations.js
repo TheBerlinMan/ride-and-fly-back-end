@@ -5,12 +5,12 @@ import { Message } from "../models/message.js";
 async function showConvo(req,res){
   const { conversationId } = req.params;
   try {
-    const messages = await Message.find({ conversation: conversationId})
+    const conversation = await Conversation.findById(conversationId)
     .populate('messageAuthor', 'name')
     .populate('recipient', 'name')
+    .populate('messages', 'text')
     .sort({ createdAt: 1 })
-    res.json(messages)
-    // this seems to be the code because I am pulling messages into the inbox, not conversations. might have to adjust later.
+    res.json(conversation)
   } catch (error) {
     console.log(error)
     res.status(500).json(error)
@@ -20,7 +20,8 @@ async function showConvo(req,res){
 async function allConvos(req,res){
   try {
     const convos = await Conversation.find({})
-    // .populate('author')
+    .populate('messageAuthor', 'name')
+    .populate('recipient', 'name')
     .sort({createdAt: 'desc'})
     res.status(200).json(convos)
   } catch (error) {
