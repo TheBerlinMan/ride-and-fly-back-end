@@ -4,6 +4,7 @@ import { Trip } from "../models/trip.js"
 async function create(req, res) {
   try {
     req.body.author = req.user.profile
+    console.log(req.body);
     const trip = await Trip.create(req.body)
     await Profile.updateMany(
       { _id: { $in: req.body.carPals }},
@@ -20,7 +21,8 @@ async function create(req, res) {
 async function index (req,res) {
   try {
     const trips = await Trip.find({})
-    .populate('author')
+    .populate(['carPals', 'post'])
+    //add review to populate 
     .sort({createdAt: 'desc'})
     res.status(200).json(trips)
   } catch (error) {
