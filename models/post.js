@@ -4,19 +4,6 @@ const Schema = mongoose.Schema
 
 
 
-
-
-
-const carSchema = new Schema(
-  {
-    luxuryCar: Boolean,
-    oversizedLuggage: Boolean,
-    travelingWithPet: Boolean,
-    carType: String,
-      
-  }
-)
-
 const postSchema = new Schema(
   {
     date: {
@@ -24,7 +11,7 @@ const postSchema = new Schema(
       // required: true
     },
     time: {
-      type: Date, 
+      type: String, 
       // required: true
     },
     airport: {
@@ -44,8 +31,11 @@ const postSchema = new Schema(
       type: Number, 
       // required: true
     },
-    car: [carSchema],
     author: [{type: Schema.Types.ObjectId, ref: 'Profile'}],
+    luxuryCar: { type: Boolean},
+    oversizedLuggage: { type: Boolean},
+    travelingWithPet: {type: Boolean},
+    carType: {type: String},
 
 
     
