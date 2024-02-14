@@ -47,3 +47,7 @@ export {
   indexInbox,
   sendMessage,
 }
+
+
+// click into message, from inbox
+// see messages log

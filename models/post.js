@@ -3,6 +3,10 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 
+
+
+
+
 const carSchema = new Schema(
   {
     luxuryCar: Boolean,
@@ -41,7 +45,9 @@ const postSchema = new Schema(
       // required: true
     },
     car: [carSchema],
-    author: [{type: Schema.Types.ObjectId, ref: 'Profile'}] 
+    author: [{type: Schema.Types.ObjectId, ref: 'Profile'}],
+    messages: [{type: Schema.Types.ObjectId, ref: 'Message'}],
+
     
 },{
   timestamps: true,
