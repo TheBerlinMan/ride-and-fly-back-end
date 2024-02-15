@@ -3,9 +3,9 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 const tripSchema = new Schema({
-  messages: {type: Schema.Types.ObjectId, ref: 'Messages'},
-  carPals: [{type: Schema.Types.ObjectId, ref: 'Profiles'}],
-  ratings: {type: Schema.Types.ObjectId, ref: 'Reviews'},
+  messages: {type: Schema.Types.ObjectId, ref: 'Message'},
+  carPals: [{type: Schema.Types.ObjectId, ref: 'Profile'}],
+  ratings: {type: Schema.Types.ObjectId, ref: 'Review'},
   post: {type: Schema.Types.ObjectId, ref: 'Post'},
 
 },{

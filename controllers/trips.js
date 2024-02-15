@@ -24,6 +24,7 @@ async function index (req,res) {
     .populate(['carPals', 'post'])
     //add review to populate 
     .sort({createdAt: 'desc'})
+    console.log("TRIPS, 😈,", trips)
     res.status(200).json(trips)
   } catch (error) {
     console.log(error)
