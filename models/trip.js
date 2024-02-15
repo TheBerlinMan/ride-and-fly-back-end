@@ -7,6 +7,7 @@ const tripSchema = new Schema({
   carPals: [{type: Schema.Types.ObjectId, ref: 'Profile'}],
   ratings: {type: Schema.Types.ObjectId, ref: 'Review'},
   post: {type: Schema.Types.ObjectId, ref: 'Post'},
+  isActive: {type: Boolean, default: true},
 
 },{
   timestamps: true,
