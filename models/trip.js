@@ -8,6 +8,7 @@ const tripSchema = new Schema({
   ratings: {type: Schema.Types.ObjectId, ref: 'Review'},
   post: {type: Schema.Types.ObjectId, ref: 'Post'},
   isActive: {type: Boolean, default: true},
+  isComplete: {type: Boolean, default: false},
 
 },{
   timestamps: true,
