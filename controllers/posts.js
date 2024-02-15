@@ -68,6 +68,24 @@ async function deletePost(req, res) {
   }
 }
 
+async function createReview(req, res) {
+  try {
+    req.body.author = req.user.profile
+    const post = await Post.findById(req.params.postId)
+    post.comments.push(req.body)
+    await post.save()
+
+    const newReview = post.reviews[post.reviews.length - 1]
+
+    const profile = await Profile.findById(req.user.profile)
+    newReview.author = profile
+
+    res.status(201).json(newReview)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+
 
 // async function sendMessage(req,res){
 
@@ -114,5 +132,6 @@ export {
   show,
   update,
   deletePost as delete,
+  createReview
 }
 

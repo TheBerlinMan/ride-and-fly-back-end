@@ -2,7 +2,15 @@ import mongoose from 'mongoose'
 
 const Schema = mongoose.Schema
 
-
+const reviewSchema = new Schema({
+  review: {
+    type: String, 
+    // required: true
+  },
+  author: [{type: Schema.Types.ObjectId, ref: 'Profile'}],
+},{
+  timestamps: true,
+})
 
 const postSchema = new Schema(
   {
@@ -31,6 +39,7 @@ const postSchema = new Schema(
       type: Number, 
       // required: true
     },
+    reviews: [reviewSchema],
     author: [{type: Schema.Types.ObjectId, ref: 'Profile'}],
     luxuryCar: { type: Boolean},
     oversizedLuggage: { type: Boolean},
