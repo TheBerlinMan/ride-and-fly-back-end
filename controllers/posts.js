@@ -72,7 +72,7 @@ async function createReview(req, res) {
   try {
     req.body.author = req.user.profile
     const post = await Post.findById(req.params.postId)
-    post.comments.push(req.body)
+    post.reviews.push(req.body)
     await post.save()
 
     const newReview = post.reviews[post.reviews.length - 1]
