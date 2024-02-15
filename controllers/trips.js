@@ -24,7 +24,6 @@ async function index (req,res) {
     .populate(['carPals', 'post'])
     //add review to populate 
     .sort({createdAt: 'desc'})
-    console.log("TRIPS, 😈,", trips)
     res.status(200).json(trips)
   } catch (error) {
     console.log(error)
@@ -35,7 +34,7 @@ async function index (req,res) {
 async function show(req, res) {
   try {
     const trip = await Trip.findById(req.params.tripId)
-    .populate(['author', 'carPals'])
+    .populate(['post', 'carPals'])
     res.status(200).json(trip)
   } catch (error) {
     console.log(error)
@@ -49,7 +48,7 @@ async function update(req, res){
       req.params.tripId,
       req.body,
       { new: true }
-    ).populate('author')
+    ).populate(['post', 'carPals'])
     res.status(200).json(trip)
   } catch (error) {
     console.log(error)
@@ -70,6 +69,9 @@ async function deleteTrip(req, res) {
     res.status(500).json(error)
   }
 }
+
+
+
 
 export {
   create,

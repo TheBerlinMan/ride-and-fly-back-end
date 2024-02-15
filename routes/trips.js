@@ -12,7 +12,7 @@ router.use(decodeUserFromToken)
 router.post('/', checkAuth, tripsCtrl.create)
 router.get('/', checkAuth, tripsCtrl.index)
 router.get('/:tripId', checkAuth, tripsCtrl.show)
-router.put('/:tripId', checkAuth, tripsCtrl.update)
+router.put('/', checkAuth, tripsCtrl.update)
 router.delete('/:tripId', checkAuth, tripsCtrl.delete)
 
 
