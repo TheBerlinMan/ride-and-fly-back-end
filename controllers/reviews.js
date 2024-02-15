@@ -1,28 +1,28 @@
-import { Profile } from "../models/profile"
-import { Review } from "../models/reviews"
+import { Profile } from "../models/profile.js"
+import { Review } from "../models/review.js"
 
-async function index (req, res) {
-  try {
-    const reviews = await Review.find({})
-    .populate('author')
-    .sort({createdAt: 'desc'})
-    res.status(200).json(reviews)
-  } catch (error) {
-    console.log(error)
-    res.status(500).json(error)
-  }
-}
+// async function index (req, res) {
+//   try {
+//     const reviews = await Review.find({})
+//     .populate('author')
+//     .sort({createdAt: 'desc'})
+//     res.status(200).json(reviews)
+//   } catch (error) {
+//     console.log(error)
+//     res.status(500).json(error)
+//   }
+// }
 
-async function show(req, res) {
-  try {
-    const review = await Review.findById(req.params.reviewId)
-    .populate(['author'])
-    res.status(200).json(review)
-  } catch (error) {
-    console.log(error)
-    res.status(500).json(error)
-  }
-}
+// async function show(req, res) {
+//   try {
+//     const review = await Review.findById(req.params.reviewId)
+//     .populate(['author'])
+//     res.status(200).json(review)
+//   } catch (error) {
+//     console.log(error)
+//     res.status(500).json(error)
+//   }
+// }
 
 async function create(req, res) {
   try {
@@ -42,7 +42,7 @@ async function create(req, res) {
 }
 
 export {
-  index,
-  show,
+  // index,
+  // show,
   create
 }
