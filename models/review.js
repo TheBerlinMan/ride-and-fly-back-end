@@ -13,7 +13,7 @@ const reviewSchema = new Schema({
     // required: true
   },
   author: [{type: Schema.Types.ObjectId, ref: 'Profile'}],
-  carPals: {type: Schema.Types.ObjectId, ref: 'Profiles'}
+  carPals: {type: Schema.Types.ObjectId, ref: 'Profile'}
 },{
   timestamps: true,
 })
