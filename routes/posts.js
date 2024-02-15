@@ -14,6 +14,6 @@ router.get('/', checkAuth, postsCtrl.index)
 router.get('/:postId', checkAuth, postsCtrl.show)
 router.put('/:postId', checkAuth, postsCtrl.update)
 router.delete('/:postId', checkAuth, postsCtrl.delete)
-
+router.post('/:postId/review', checkAuth, postsCtrl.createReview)
 
 export { router }
