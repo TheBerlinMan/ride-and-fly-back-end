@@ -35,6 +35,8 @@ async function sendMessage(req, res) {
       
       conversation = new Conversation({
         participants: [messageAuthor, recipient],
+        messageAuthor,
+        recipient,
         relatedPost,
       });
       await conversation.save()
