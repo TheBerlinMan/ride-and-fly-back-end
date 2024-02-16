@@ -7,7 +7,7 @@ const profileSchema = new Schema({
   photo: String,
   bio: String,
   funFacts: String,
-  // reviews: [{type: Schema.Types.ObjectId, ref: 'Review'}], 
+  reviews: [{type: Schema.Types.ObjectId, ref: 'Review'}], 
   posts: [{type: Schema.Types.ObjectId, ref: 'Post'}]
 },{
   timestamps: true,

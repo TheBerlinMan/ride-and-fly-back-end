@@ -70,9 +70,6 @@ async function deleteTrip(req, res) {
   }
 }
 
-
-
-
 export {
   create,
   index,

@@ -5,7 +5,7 @@ const Schema = mongoose.Schema
 const reviewSchema = new Schema({
   review: {
     type: String, 
-    // required: true
+    required: true
   },
   author: [{type: Schema.Types.ObjectId, ref: 'Profile'}],
 },{
@@ -16,28 +16,28 @@ const postSchema = new Schema(
   {
     date: {
       type: Date, 
-      // required: true
+      required: true
     },
     time: {
       type: String, 
-      // required: true
+      required: true
     },
     airport: {
       type: String, 
-      // required: true, 
+      required: true, 
       enum:['EWR', 'JFK', 'LGA']
     },
     terminal: {
       type: String, 
-      // required: true
+      required: true
     },
     dropOff: {
       type: String, 
-      // required: true
+      required: true
     },
     partySize: {
       type: Number, 
-      // required: true
+      required: true
     },
     reviews: [reviewSchema],
     author: [{type: Schema.Types.ObjectId, ref: 'Profile'}],

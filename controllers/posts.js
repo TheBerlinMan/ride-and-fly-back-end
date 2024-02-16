@@ -86,46 +86,6 @@ async function createReview(req, res) {
   }
 }
 
-
-// async function sendMessage(req,res){
-
-//   try {
-//     req.body.author = req.user.profile
-//     const post = await Post.findById(req.params.postId)
-//     post.messages.push(req.body)
-//     await post.save()
-
-//     const newMessage = post.messages[post.messages.length - 1]
-//     const profile = await Profile.findById(req.user.profile)
-//     newMessage.messageAuthor = profile
-//     res.status(201).json(newMessage)
-//   } catch (error) {
-//     console.log(error)
-//     res.status(500).json(error)
-//   }
-// }
-
-
-// async function sendMessage2(req,res){
-
-//   const { recipient, text, relatedPost } = req.body
-//   const messageAuthor = req.user.profile 
-
-//   try {
-//     const newMessage = new Message({
-//       messageAuthor: messageAuthor,
-//       recipient: recipient,
-//       text: text,
-//       relatedPost: relatedPost
-//     })
-//     await newMessage.save()
-//     res.json(newMessage)
-//   } catch (error) {
-//     console.log(error)
-//     res.status(500).json(error)
-//   }
-// }
-
 export {
   create,
   index,
