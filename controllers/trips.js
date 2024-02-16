@@ -42,14 +42,14 @@ async function show(req, res) {
   }
 }
 
-async function update(req, res){
+async function updateTripStatus(req, res){
   try {
-    const trip = await Trip.findByIdAndUpdate(
-      req.params.tripId,
-      req.body,
-      { new: true }
-    ).populate(['post', 'carPals'])
+    const trip = await Trip.findById(req.params.tripId)
+    trip.isActive = false
+    trip.isComplete = true
+    await trip.save()
     res.status(200).json(trip)
+    console.log("This is trip: ", trip )
   } catch (error) {
     console.log(error)
     res.status(500).json(error)
@@ -77,7 +77,7 @@ export {
   create,
   index,
   show,
-  update,
+  updateTripStatus,
   deleteTrip as delete
 }
 

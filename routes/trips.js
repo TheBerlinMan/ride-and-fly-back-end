@@ -11,8 +11,8 @@ const router = Router()
 router.use(decodeUserFromToken)
 router.post('/', checkAuth, tripsCtrl.create)
 router.get('/', checkAuth, tripsCtrl.index)
+router.patch('/complete-trip/:tripId', checkAuth, tripsCtrl.updateTripStatus)
 router.get('/:tripId', checkAuth, tripsCtrl.show)
-router.put('/', checkAuth, tripsCtrl.update)
 router.delete('/:tripId', checkAuth, tripsCtrl.delete)
 
 
