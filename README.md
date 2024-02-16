@@ -52,7 +52,7 @@ What inspires us to build *Ride & Fly* is that as avid travelers, we are tired o
 * [dynamic text](https://alvarotrigo.com/blog/css-text-animations/)
 
 
-# 🧊 Ice Box  
+# 🧊 Next Steps  
 - [ ] Responsive Design
 - [ ] Add Search Box
 - [ ] Add MUI
