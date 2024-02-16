@@ -60,7 +60,7 @@ async function sendMessage(req, res) {
     res.json(newMessage);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Failed to send message", error });
+    res.status(500).json(error);
   }
 }
 
