@@ -1,7 +1,6 @@
 # Ride & Fly 
 ## Share Journey, Share Fun
 
-![Alt Text](./src/assets/images/ride&fly_app.png)
 
 *Ride & Fly* is your hassle-free solution to rider and share your way to airport. This is the app where you can share your journey and fun with fellow buddies as well as the expenses.
 
