@@ -7,6 +7,9 @@ const reviewSchema = new Schema({
     type: String, 
     required: true
   },
+  rating: {
+    type: String,
+  },
   author: [{type: Schema.Types.ObjectId, ref: 'Profile'}],
 },{
   timestamps: true,
