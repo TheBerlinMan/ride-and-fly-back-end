@@ -1,9 +1,8 @@
 # Ride & Fly 
 ## Share Journey, Share Fun
 
-![Alt Text](./src/assets/images/ride&fly_app.png)
 
-*Ride & FLy* is your hassel-free solution to rider and share your way to airport. This is the app where you can share your journey and fun with fellow buddies as well as the expenses.
+*Ride & Fly* is your hassle-free solution to rider and share your way to airport. This is the app where you can share your journey and fun with fellow buddies as well as the expenses.
 
 What inspires us to build *Ride & Fly* is that as avid travelers, we are tired of the stress and expenses of getting to the aitport. So say good bye to the days of costly cab rides and cumbersome luggae struggles. *Ride & FLy* will address the failed promise from copmanies like Uber and Lyft, where there would be fewer cars on the road, namely fewer carbon emission and fewer car crashes. 
 
@@ -52,7 +51,7 @@ What inspires us to build *Ride & Fly* is that as avid travelers, we are tired o
 * [dynamic text](https://alvarotrigo.com/blog/css-text-animations/)
 
 
-# 🧊 Ice Box  
+# 🧊 Next Steps  
 - [ ] Responsive Design
 - [ ] Add Search Box
 - [ ] Add MUI
